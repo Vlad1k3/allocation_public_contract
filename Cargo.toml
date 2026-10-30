@@ -1,0 +1,23 @@
+[package]
+name = "allocation-program"
+version = "0.1.0"
+edition = "2021"
+description = "Solana token allocation program: oracle-priced SOL sale with timelocked pricing, role separation and lock bonuses"
+license = "MIT"
+
+[lib]
+name = "allocation_program"
+crate-type = ["cdylib", "lib"]
+
+[features]
+default = []
+no-entrypoint = []
+# 2 min price timelock instead of 24h, for devnet testing only
+short-timelock = []
+
+[dependencies]
+borsh = "0.10.3"
+borsh-derive = "0.10.3"
+chainlink_solana = "1.0.0"
+solana-program = "=1.18.0"
+spl-token = { version = "=4.0.0", features = ["no-entrypoint"] }
